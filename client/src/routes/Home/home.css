@@ -1,0 +1,140 @@
+.home{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: relative;
+   .orbital{
+    position: absolute;
+    top:0vh;
+    left:0;
+    opacity: 0.2;
+    width: 70%;
+    height: 100%;
+    z-index: -1;
+    animation: 50s linear infinite rotateOrbital;
+   }
+    
+    .left{
+        width: 50%;
+        height: 90vh;
+        display: flex;
+        flex-direction: column;
+        gap:16px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 10vw;
+        text-align:center;
+        h1{
+            font-size: 6vw;
+            background: linear-gradient(to right, #217bfe, rgb(248, 80, 153));
+            background-clip: text;
+            --webkit-background-clip:text;
+            color:transparent;
+        }
+        h4{
+            font-size: 2vw;
+        }
+        p{
+            font-weight: 400;
+            font-size: 1vw;
+            max-width: 70%;
+        }
+        button{
+            background-color: #217bfe;
+            
+            width: 100px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            color:white;
+            padding: 10px 10px;
+            font-size: 12px;
+            cursor: pointer;
+            a{
+                text-decoration: none;
+
+
+            }
+
+
+        }
+        button:hover{
+            background-color: #fe219b;
+        }
+       .orbital{
+        position: absolute;
+        left:0;
+        top:0;
+       }
+    }
+    .right{
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .anim-box{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #140e2d;
+            width: 80%;
+            height: 50%;
+            position: relative;
+
+            .rocket{
+                width: 50%;           
+                 height: 50%;
+                animation: 3s ease-in-out infinite alternate botAnimation;
+                /* background-color: white; */
+            }
+            .bg{
+              width: 100%;
+              height: 100%;
+              overflow: hidden;
+              position: absolute;
+              left: 0;
+              top: 0;
+              .bg-anim{
+                background-image: url("https://img.freepik.com/free-photo/beautiful-silver-stars-background_23-2150160759.jpg?ga=GA1.1.1313162215.1721633016&semt=ais_hybrid");
+                width: 200%;
+                opacity: 0.4;
+                height: 100%;
+                background-size: auto 100%;
+                animation: 8s ease-in-out infinite alternate slidebg;
+              }
+            }
+        }
+
+    }
+}
+@keyframes rotateOrbital{
+    0% {
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(60deg);
+    }
+
+}
+@keyframes botAnimation{
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    100%{
+        transform: scale(1.1) rotate(-5deg);
+    }
+
+}
+@keyframes slidebg{
+    0% {
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-50%)
+    }
+
+}

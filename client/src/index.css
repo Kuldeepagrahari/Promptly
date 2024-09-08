@@ -1,0 +1,30 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+  
+}
+body{
+  /* background-color: #090909;
+   */
+   background-color: rgb(32, 31, 31);
+  color:#ececec;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+a{
+  text-decoration: none;
+  color:inherit;
+}
+
+button:hover{
+  transform: scale(1.01);
+  
+}
+button{
+  border: none;
+  padding: 10px 20px;
+}
+.app{
+  font-size: 1.2vw;
+}
