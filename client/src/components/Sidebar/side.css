@@ -1,0 +1,86 @@
+.side{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    color:rgb(212, 208, 208);
+    /* align-items: center; */
+
+
+
+    a{
+        display: flex;
+        align-items: center;
+        gap:5px;
+        span{font-size: 20px;}
+        font-size: 15px;
+    }
+    h1{
+        font-size: 15px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-weight: bold;
+
+    }
+    .dashlist{
+        list-style: none;
+        height: 12vh;
+        display: flex;
+        margin-left: 5px;
+        flex-direction: column;
+        /* gap: 5px; */
+       a{ font-size: 14px; font-weight: 500;padding: 4px 10px; }
+       a:hover{
+        background-color:#575757;
+        border-radius: 10px;
+       }
+
+    }
+    hr{
+        opacity: 0.1;
+        height: 2px;
+        background-color: #5f5a5a;
+        margin-top: 5px;
+    }
+    .chatlist{
+        height: 52vh;
+        display: flex;
+        margin-left: 5px;
+        flex-direction: column;
+        ::-webkit-scrollbar{
+            width: 5px;
+            border-radius: 20px;
+            height: 100%;
+            background-color: rgb(159, 157, 157);
+          }
+        overflow-y: scroll;
+        /* gap:5px; */
+     a{
+        font-size: 14px;
+        padding: 5px 10px;
+        font-weight: 500;
+     }
+     a:hover{
+        background-color: #575757;
+        border-radius: 10px;
+
+     }
+    }
+    .upgrade{
+        display: flex;
+        margin-top: 10px;
+        align-items: center;
+        gap:5px;
+        .upgrade-text{
+         a{
+            font-size: 15px;
+            font-weight: bold;
+         }
+         p{
+           font-size: 14px;
+         }
+        }
+
+    }
+
+
+}

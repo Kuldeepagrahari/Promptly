@@ -2,11 +2,12 @@
     width: 100%;
     z-index: 1;
     header{
-        width: 100%;
+        /* margin-left: 270px; */
+        /* width: 80%; */
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 2vw;
+        padding: 20px 20px;
         height: 8vh;
         .logo{
             display: flex;
@@ -16,7 +17,7 @@
             font-size: 20px;
         }
         a{
-            font-size: 1vw;
+            font-size: 15px;
             color:white;
         }
     }

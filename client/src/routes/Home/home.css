@@ -6,13 +6,17 @@
     position: relative;
    .orbital{
     position: absolute;
-    top:0vh;
-    left:0;
-    opacity: 0.2;
-    width: 70%;
+    top:0;
+    left:30px;
+    opacity: 0.1;
+    width: 50%;
     height: 100%;
+    border-radius: 50%;
     z-index: -1;
     animation: 50s linear infinite rotateOrbital;
+    ::-webkit-scrollbar{
+        display: none;
+    }
    }
     
     .left{
@@ -74,6 +78,7 @@
         width: 50%;
         height: 100%;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         .anim-box{
@@ -99,16 +104,25 @@
               left: 0;
               top: 0;
               .bg-anim{
-                background-image: url("https://img.freepik.com/free-photo/beautiful-silver-stars-background_23-2150160759.jpg?ga=GA1.1.1313162215.1721633016&semt=ais_hybrid");
+                background-image: url("https://img.freepik.com/free-vector/horizontal-white-lines-black-background_1017-37288.jpg?ga=GA1.1.1313162215.1721633016&semt=ais_hybrid") ;
+                
                 width: 200%;
-                opacity: 0.4;
+                opacity: 0.2;
                 height: 100%;
                 background-size: auto 100%;
                 animation: 8s ease-in-out infinite alternate slidebg;
               }
             }
         }
+     .type{
+        font-size: 10px;
+        background-color: rgb(251, 5, 124);
+        border-radius: 10px;
+        padding:5px 10px;
+        margin-top: 10px;
+        /* margin-left: ; */
 
+     }
     }
 }
 @keyframes rotateOrbital{
@@ -137,4 +151,39 @@
         transform: translateX(-50%)
     }
 
+}
+
+@media screen  and (max-width:600px){
+    .home{
+        flex-direction: column;
+        .left{
+           height:40vh;
+           width: 100%;
+           h1{
+            font-size: 80px;
+           }
+           h4{
+            font-size: 20px;
+           }
+           p{
+            font-size: 15px;
+           }
+           .orbital{
+            width: 100%;
+            height: 50%;
+           }
+
+        }
+        .right{
+            height:50vh;
+            width: 100%;
+           .anim-box{
+            .rocket{
+                width: 50%;
+                height:100%;
+            }
+           }
+        }
+    }
+   
 }
