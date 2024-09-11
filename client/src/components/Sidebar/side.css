@@ -4,7 +4,7 @@
     flex-direction: column;
     color:rgb(212, 208, 208);
     /* align-items: center; */
-
+     padding-top: 40px;
 
 
     a{
@@ -15,10 +15,11 @@
         font-size: 15px;
     }
     h1{
-        font-size: 15px;
+        font-size: 12px;
         margin-top: 10px;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         font-weight: bold;
+        cursor: pointer;
 
     }
     .dashlist{
@@ -36,10 +37,10 @@
 
     }
     hr{
-        opacity: 0.1;
+        opacity: 0.2;
         height: 2px;
         background-color: #5f5a5a;
-        margin-top: 5px;
+        margin-top: 10px;
     }
     .chatlist{
         height: 52vh;
@@ -60,7 +61,7 @@
         font-weight: 500;
      }
      a:hover{
-        background-color: #575757;
+        background-color: #353434;
         border-radius: 10px;
 
      }
@@ -76,7 +77,7 @@
             font-weight: bold;
          }
          p{
-           font-size: 14px;
+           font-size: 13px;
          }
         }
 

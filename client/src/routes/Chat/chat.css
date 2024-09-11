@@ -1,0 +1,32 @@
+.chatter{
+    /* width: 100%; */
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10vh;
+    font-size: 15px;
+    /* border: 1px red solid; */
+    /* overflow : scroll; */
+    .wrapper{
+        flex:1;
+        overflow: scroll;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        .chats{
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+          .message{
+            padding:20px;
+            &.user{
+                background-color: rgb(48, 47, 47);
+                max-width: 80%;
+                border-radius: 20px;
+                align-self: flex-end;
+            }
+          }
+        }
+    }
+}

@@ -5,7 +5,7 @@ import "./side.css"
 const Sidebar = () => {
   return (
     <div className='side'>
-       <NavLink to="/" className="logo"><FaInnosoft style={{fontSize:"25px"}}/><span>Sam AI</span></NavLink>
+       {/* <NavLink to="/" className="logo"><FaInnosoft style={{fontSize:"25px"}}/><span>Sam AI</span></NavLink> */}
        <h1>DASHBOARD</h1>
        <div className="dashlist">
        
