@@ -5,6 +5,7 @@ import { BsFillSendFill } from "react-icons/bs";
 import { FaInnosoft } from "react-icons/fa";
 import { MdSend } from "react-icons/md";
 import { RiAttachmentLine } from "react-icons/ri";
+import Upload from '../upload/Upload.jsx';
 const DashBody = () => {
   return (
     <div className='chat'>
@@ -28,9 +29,13 @@ const DashBody = () => {
         </div>
       </div>
       <div className="search">
-        <button className='attach'><RiAttachmentLine style={{backgroundColor:"rgb(130,130,130)", width:"30px", height:"30px", borderRadius:"50%", padding:"5px"}}/></button>
+        {/* <label htmlFor="file" className='attach'><RiAttachmentLine style={{backgroundColor:"rgb(130,130,130)", width:"30px", height:"30px", borderRadius:"50%", padding:"5px"}}/></label> */}
+        <form>
+        <Upload/>
+        <input id='file' type='file' multiple={false} hidden></input>
         <input type="text" placeholder='Ask Me Anything...'/>
         <button><MdSend style={{backgroundColor:"rgb(200,200,200)",  padding:"5px", width:"35px", fontSize:"30px", borderRadius:"50%",}}/></button>
+        </form>
       </div>
     </div>
   )

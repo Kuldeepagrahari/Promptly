@@ -3,6 +3,7 @@
     display: flex;
     align-items: center;
     height: 100%;
+    margin-top: 10vh;
     position: relative;
    .orbital{
     position: absolute;
