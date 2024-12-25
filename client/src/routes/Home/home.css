@@ -2,9 +2,10 @@
     width: 100%;
     display: flex;
     align-items: center;
-    height: 100%;
-    margin-top: 10vh;
+    height: 100vh;
+    padding-top: 8vh;
     position: relative;
+    background-image: linear-gradient(0deg, rgb(4, 28, 179),rgb(1, 2, 77),rgb(11, 1, 44),rgb(11, 1, 49),rgb(2, 9, 61), rgb(8, 1, 41),rgb(2, 8, 101), black);
    .orbital{
     position: absolute;
     top:0;
@@ -46,8 +47,8 @@
             max-width: 70%;
         }
         button{
-            background-color: #217bfe;
-            
+            background-color: #fe219b;
+            font-weight: bold;
             width: 100px;
             height: 30px;
             display: flex;
@@ -68,6 +69,9 @@
         }
         button:hover{
             background-color: #fe219b;
+            transform: scale(1.1);
+            font-size: 15px;
+            width: 150px;
         }
        .orbital{
         position: absolute;
@@ -121,6 +125,7 @@
         border-radius: 10px;
         padding:5px 10px;
         margin-top: 10px;
+        box-shadow: 1px 1px 5px rgb(58, 57, 57);
         /* margin-left: ; */
 
      }
@@ -154,9 +159,10 @@
 
 }
 
-@media screen  and (max-width:600px){
+@media screen  and (max-width:950px){
     .home{
         flex-direction: column;
+        background-image: linear-gradient(-180deg, rgb(54, 80, 246), rgb(254, 8, 123),black,black,black, black,black,black,black,black, black, black, black);
         .left{
            height:40vh;
            width: 100%;
@@ -183,8 +189,10 @@
                 width: 50%;
                 height:100%;
             }
+            
            }
         }
+       
     }
    
 }

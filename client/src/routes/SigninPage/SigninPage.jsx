@@ -4,7 +4,7 @@ import { SignedIn, SignedOut, SignInButton, UserButton , SignIn} from "@clerk/cl
 const SigninPage = () => {
   return (
     <div className='signin'>
-      <SignIn path="/sign-in" signUpUrl='/sign-up'></SignIn>
+      <SignIn path="/sign-in" signUpUrl='/sign-up' forceRedirectUrl="/dashboard"></SignIn>
     </div>
   )
 }

@@ -1,23 +1,50 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
-// import dotenv from "dotenv"
-// dotenv.config()
 import './index.css'
-import { BrowserRouter } from 'react-router-dom'
-import { ClerkProvider } from '@clerk/clerk-react'
-const PUBLISHABLE_KEY = "pk_test_YXB0LWdhcmZpc2gtMC5jbGVyay5hY2NvdW50cy5kZXYk"
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import RootLayout from './Layouts/RootLayout/RootLayout.jsx'
+import HomePage from './routes/Home/HomePage.jsx'
+import SigninPage from './routes/SigninPage/SigninPage.jsx'
+import SignupPage from './routes/SignupPage/SignupPage.jsx'
+import DashLayout from './Layouts/DashboardLayout/DashLayout.jsx'
+import ChatPage from './routes/Chat/ChatPage.jsx'
+import DashBody from './components/Dashboard-body/DashBody.jsx'
 
-if (!PUBLISHABLE_KEY) {
-  throw new Error("Missing Publishable Key")
-}
+
+const router = createBrowserRouter([{
+  element: <RootLayout />,
+  children: [
+    {
+      path: "/",
+      element: <HomePage />
+    },
+    {
+      path: "/sign-in/*",
+      element: <SigninPage />
+    },
+    {
+      path: "/sign-up/*",
+      element: <SignupPage />
+    },
+    {
+      element: <DashLayout />,
+      children: [
+        {
+          path: "/dashboard",
+          element: <DashBody />
+        },
+        {
+          path: "/dashboard/chat/:id",
+          element: <ChatPage />
+        },
+      ]
+    }
+  ]
+}])
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+  
+      <RouterProvider router={router}></RouterProvider>
     
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-    </ClerkProvider>
   </StrictMode>,
 )

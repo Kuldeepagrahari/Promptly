@@ -6,7 +6,7 @@ import TypeWritter from '../../components/typeWritter/TypeWritter'
 const HomePage = () => {
   return (
     <div className='home'>
-      <img src="https://img.freepik.com/free-vector/milky-way-planets-collection_23-2148276967.jpg?size=626&ext=jpg&ga=GA1.1.1313162215.1721633016&semt=ais_hybrid" className="orbital" alt="" />
+      {/* <img src="https://img.freepik.com/free-vector/milky-way-planets-collection_23-2148276967.jpg?size=626&ext=jpg&ga=GA1.1.1313162215.1721633016&semt=ais_hybrid" className="orbital" alt="" /> */}
       <div className="left">
         <h1><span>SAM AI</span></h1>
         <h4>Supercharge your creativity and productivity</h4>

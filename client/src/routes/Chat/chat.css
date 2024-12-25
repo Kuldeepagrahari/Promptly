@@ -6,6 +6,15 @@
     flex-direction: column;
     margin-top: 10vh;
     font-size: 15px;
+    background-color: #1f1f1f;
+    width: 80%;
+    border-radius: 20px;
+    border-left: 10px solid rgb(245, 3, 92) ;
+    padding: 10px 0;
+    /* box-shadow: 1px 1px 10px rgb(247, 1, 173); */
+    
+    /* margin-left: 20px; */
+    /* background-color: rgb(62, 61, 61); */
     /* border: 1px red solid; */
     /* overflow : scroll; */
     .wrapper{
@@ -14,14 +23,16 @@
         width: 100%;
         display: flex;
         justify-content: center;
+        /* height: 100%; */
         .chats{
-          width: 50%;
+          width: 90%;
           display: flex;
           flex-direction: column;
           .message{
             padding:20px;
+            line-height: 30px;
             &.user{
-                background-color: rgb(48, 47, 47);
+                background-color: rgb(4, 78, 250);
                 max-width: 80%;
                 border-radius: 20px;
                 align-self: flex-end;
@@ -29,6 +40,11 @@
           }
         }
     }
+}
+.chatter:hover{
+  box-shadow: 1px 1px 100px rgb(12, 41, 99);
+  border-left: 10px solid rgb(54, 80, 246);
+  
 }
 .end{
   height:10vh;

@@ -15,7 +15,7 @@ const safetySettings = [
   },
 ];
 
-const genAI = new GoogleGenerativeAI("AIzaSyA3bPwyy-EgScKBi-Iyp7FT0jeUJhHYNQc");
+const genAI = new GoogleGenerativeAI("AIzaSyAi0PsFhtwaVKziefKJC7k-Nv9NSDXqoU8");
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" , safetySettings});
 
 export default model

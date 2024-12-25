@@ -19,9 +19,11 @@ function App() {
         <Route path="/sign-in/*" element={<SigninPage/>}></Route>
         <Route path="/sign-up/*" element={<SignupPage/>}></Route>
         <Route path="/dashboard">
-          <Route path="/dashboard/" element={<DashBoard/>}></Route>
-          <Route path="/dashboard/dashbody" element={<DashBody/>}></Route>
+          <Route path="/dashboard" element={<DashBoard/>}></Route>
+          {/* <Route path="/dashboard/dashbody" element={<DashBody/>}></Route> */}
           <Route path="/dashboard/chat/:id" element={<ChatPage/>}></Route>
+
+          
         </Route>
        </Routes>
     </div>

@@ -6,7 +6,26 @@ import { FaInnosoft } from "react-icons/fa";
 import { MdSend } from "react-icons/md";
 import { RiAttachmentLine } from "react-icons/ri";
 import Upload from '../upload/Upload.jsx';
+import { useNavigate } from 'react-router-dom';
 const DashBody = () => {
+  const navigate = useNavigate()
+  const handleSubmit = async (e) => {
+     e.preventDefault()
+     const text = e.target.text.value;
+
+     if ( !text )return;
+
+     const response = await fetch("http://localhost:106/api/chats", {
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+     },
+     body:JSON.stringify({text})
+    })
+
+    
+    
+  }
   return (
     <div className='chat'>
       <div className="text">
@@ -30,11 +49,11 @@ const DashBody = () => {
       </div>
       <div className="search">
         {/* <label htmlFor="file" className='attach'><RiAttachmentLine style={{backgroundColor:"rgb(130,130,130)", width:"30px", height:"30px", borderRadius:"50%", padding:"5px"}}/></label> */}
-        <form>
+        <form onSubmit={handleSubmit}>
         <Upload/>
         <input id='file' type='file' multiple={false} hidden></input>
-        <input type="text" placeholder='Ask Me Anything...'/>
-        <button><MdSend style={{backgroundColor:"rgb(200,200,200)",  padding:"5px", width:"35px", fontSize:"30px", borderRadius:"50%",}}/></button>
+        <input type="text" name = "text" placeholder='Ask Me Anything...' />
+        <button onSubmit={ () => navigate("/dashboard/chat/12")}><MdSend style={{backgroundColor:"rgb(200,200,200)",  padding:"5px", width:"35px", fontSize:"30px", borderRadius:"50%",}}/></button>
         </form>
       </div>
     </div>

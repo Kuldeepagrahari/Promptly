@@ -8,16 +8,17 @@ import SigninPage from '../../routes/SigninPage/SigninPage';
 const Nav = () => {
   return (
     <div className='nav'>
-    <header>
-      <NavLink to="/" className="logo"><FaInnosoft/><span>Sam AI</span></NavLink>
-      <NavLink><SignedOut>
-        <NavLink to="/sign-in">Login</NavLink>
-        {/* <SignInButton /> */}
-      </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn></NavLink>
-    </header>
+      <header>
+        <NavLink to="/" className="logo"><FaInnosoft /><span>Sam AI</span></NavLink>
+        <NavLink><SignedOut>
+          <NavLink to="/sign-in">Login</NavLink>
+        </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </NavLink>
+
+      </header>
     </div>
   )
 }
