@@ -1,19 +1,51 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./dashlayout.css";
 import { FaInnosoft } from "react-icons/fa";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet , useNavigate} from "react-router-dom";
 import { IoChatboxOutline } from "react-icons/io5";
 import { RiDashboardHorizontalLine } from "react-icons/ri";
 import { MdOutlinePermContactCalendar } from "react-icons/md";
 import { MdAddCircleOutline } from "react-icons/md";
+import { useAuth } from "@clerk/clerk-react";
 import { VscThreeBars } from "react-icons/vsc";
 import { ImCross } from "react-icons/im";
 const DashLayout = () => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  // const { userId, isLoaded } = useAuth();
 
+  // const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   if (isLoaded && !userId) {
+  //     navigate("/sign-in");
+  //   }
+  // }, [isLoaded, userId, navigate]);
+  // if (!isLoaded) return "Loading...";
+  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [userchats, setUserchats] = useState([])
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
+
+  const GiveUserChats = async () => {
+    try {
+      const response = await fetch("http://localhost:106/api/userChats",{
+        credentials:"include"
+      });
+      if (response.ok) {
+        const data = await response.json(); 
+        setUserchats(data[0].chats); 
+       
+      } else {
+        console.error("Failed to fetch user chats:", response.status);
+      }
+    } catch (error) {
+      console.error("Error fetching user chats:", error);
+    }
+  };
+
+  useEffect(() => {
+    GiveUserChats(); 
+  }, [navigation]); 
 
   return (
     <div className="dash">
@@ -37,15 +69,13 @@ const DashLayout = () => {
         {!isCollapsed && <hr />}
         {!isCollapsed && <span className="title">RECENT CHATS</span>}
         <div className="list">
-          <Link to={"/dashboard/chat/1"}>
-            <IoChatboxOutline style={{ fontSize: "20px" }} />
-            {!isCollapsed && "what is React Js"}
-          </Link>
-          <Link to={"/dashboard/chat/1"}>
-            <IoChatboxOutline style={{ fontSize: "20px" }} />
-            {!isCollapsed && "how are you sam"}
-          </Link>
-          {/* Add more recent chats here */}
+          {userchats.map((chat, index) => (
+            <Link to={`/dashboard/chat/${chat._id}`} key={index}>
+              <IoChatboxOutline style={{ fontSize: "20px" }} />
+              {!isCollapsed && chat.title}
+            </Link>))}
+
+
         </div>
         {!isCollapsed && <hr />}
         {!isCollapsed && (
@@ -57,7 +87,7 @@ const DashLayout = () => {
             </div>
           </div>
         )}
-        {isCollapsed && <FaInnosoft style={{ fontSize: "40px", alignSelf:"center", marginTop:"45vh" }} />}
+        {isCollapsed && <FaInnosoft className="logo-side" style={{ fontSize: "40px", alignSelf: "center", marginTop: "45vh" }} />}
       </div>
       <div className="content">
         <Outlet />

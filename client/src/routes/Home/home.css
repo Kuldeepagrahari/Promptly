@@ -4,8 +4,19 @@
     align-items: center;
     height: 100vh;
     padding-top: 8vh;
+    background-color: black;
     position: relative;
-    background-image: linear-gradient(0deg, rgb(4, 28, 179),rgb(1, 2, 77),rgb(11, 1, 44),rgb(11, 1, 49),rgb(2, 9, 61), rgb(8, 1, 41),rgb(2, 8, 101), black);
+    video {
+        position: absolute;
+        top: -200px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* z-index: 0; */
+        opacity: 0.5; /* Optional: adjust video visibility */
+      }
+    /* background-image: linear-gradient(0deg, rgb(57, 82, 249),black, black, black); */
    .orbital{
     position: absolute;
     top:0;
@@ -31,6 +42,7 @@
         justify-content: center;
         padding: 0 10vw;
         text-align:center;
+        z-index: 90;
         h1{
             font-size: 6vw;
             background: linear-gradient(to right, #217bfe, rgb(248, 80, 153));
@@ -69,9 +81,9 @@
         }
         button:hover{
             background-color: #fe219b;
-            transform: scale(1.1);
-            font-size: 15px;
-            width: 150px;
+            transform: scale(1.05);
+            /* font-size: 15px; */
+            /* width: 100px; */
         }
        .orbital{
         position: absolute;
@@ -86,6 +98,8 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        margin-left: 10%;
+        margin-top: 10%;
         .anim-box{
             display: flex;
             align-items: center;
@@ -120,7 +134,7 @@
             }
         }
      .type{
-        font-size: 10px;
+        font-size: 20px;
         background-color: rgb(251, 5, 124);
         border-radius: 10px;
         padding:5px 10px;
@@ -162,10 +176,21 @@
 @media screen  and (max-width:950px){
     .home{
         flex-direction: column;
-        background-image: linear-gradient(-180deg, rgb(54, 80, 246), rgb(254, 8, 123),black,black,black, black,black,black,black,black, black, black, black);
+        video {
+            position: absolute;
+            top: -300px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* z-index: 0; */
+            opacity: 1; /* Optional: adjust video visibility */
+          }
+        /* background-image: linear-gradient(0deg, rgb(6, 244, 244),black, black, black); */
         .left{
            height:40vh;
            width: 100%;
+           margin-top: 20vh;
            h1{
             font-size: 80px;
            }
@@ -179,6 +204,7 @@
             width: 100%;
             height: 50%;
            }
+          
 
         }
         .right{
@@ -188,7 +214,9 @@
             .rocket{
                 width: 50%;
                 height:100%;
-            }
+            }}
+            .type{
+                font-size: 10px;
             
            }
         }
