@@ -6,7 +6,7 @@ const publicKey = "public_qPBFUkilWUEuIkCVi4N3hnGcdbw=";
 import { useRef } from 'react';
 const authenticator =  async () => {
     try {
-        const response = await fetch('http://localhost:106/api/upload');
+        const response = await fetch('https://samai-backend-bvan.onrender.com/api/upload');
 
         if (!response.ok) {
             const errorText = await response.text();

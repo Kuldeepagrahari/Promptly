@@ -16,7 +16,7 @@ const DashBody = () => {
  
     if ( !text )return;
 
-    const response = await fetch("http://localhost:106/api/chats", {
+    const response = await fetch("https://samai-backend-bvan.onrender.com/api/chats", {
      method:"POST",
      credentials:'include',
      headers:{

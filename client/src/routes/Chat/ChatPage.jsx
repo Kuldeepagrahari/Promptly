@@ -66,7 +66,7 @@ const ChatPage = () => {
         console.log("Processed response: ", result.response.text());
 
         // Update the chat in the database
-        await fetch(`http://localhost:106/api/chat/${chatId}`, {
+        await fetch(`https://samai-backend-bvan.onrender.com/api/chat/${chatId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

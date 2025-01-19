@@ -28,7 +28,7 @@ const DashLayout = () => {
 
   const GiveUserChats = async () => {
     try {
-      const response = await fetch("http://localhost:106/api/userChats",{
+      const response = await fetch("https://samai-backend-bvan.onrender.com/api/userChats",{
         credentials:"include"
       });
       if (response.ok) {
