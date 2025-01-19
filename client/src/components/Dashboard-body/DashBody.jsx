@@ -53,8 +53,8 @@ const DashBody = () => {
       <div className="search">
       
         <form onSubmit={handleSubmit}>
-        <Upload/>
-        <input id='file' type='file' multiple={false} hidden></input>
+        
+        
         <input type="text" name = "text" placeholder='Name Your Chat' />
         <button onSubmit={ () => navigate("/dashboard/chat/12")}><MdSend style={{backgroundColor:"rgb(200,200,200)",  padding:"5px", width:"35px", fontSize:"30px", borderRadius:"50%",}}/></button>
         </form>

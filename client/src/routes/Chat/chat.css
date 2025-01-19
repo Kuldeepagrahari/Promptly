@@ -56,10 +56,17 @@
   background-color: transparent;
   color:transparent;
 }
-@media screen and ( max-width:768px ) {
+
+@media screen and ( max-width:1100px ) {
   .chatter{
     width: 95%;
     height: 80vh;
     background-color: transparent;
+    .wrapper{
+      ::-webkit-scrollbar{
+        /* color:red; */
+        display: none;
+      }
+    }
   }
 }

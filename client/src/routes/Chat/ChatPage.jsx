@@ -91,7 +91,7 @@ const ChatPage = () => {
   };
 useEffect(() => {
   add()
-}, [prompt])
+}, [prompt, chatId])
   const handleSubmit = async (e) => {
     e.preventDefault();
     const text = e.target.promptInput.value;

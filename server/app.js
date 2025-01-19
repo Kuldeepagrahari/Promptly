@@ -17,7 +17,7 @@ import { ClerkExpressRequireAuth } from '@clerk/clerk-sdk-node'
 import ConnectDB from "./util/db.js"
 app.use(express.json())
 app.use(cors({
-    origin:"http://localhost:5173",
+    origin:"http://localhost:5174",
     credentials: true
 }))
 const PORT = process.env.PORT || 106

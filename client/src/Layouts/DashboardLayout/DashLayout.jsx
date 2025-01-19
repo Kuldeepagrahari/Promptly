@@ -51,7 +51,7 @@ const DashLayout = () => {
     <div className="dash">
       <div className={`chatList ${isCollapsed ? "collapsed" : ""}`}>
         <button className="toggleBtn" onClick={toggleSidebar}>
-          {isCollapsed ? <VscThreeBars /> : <ImCross />}
+          {isCollapsed ? <VscThreeBars/> : <ImCross />}
         </button>
         {!isCollapsed && <span className="title">DASHBOARD</span>}
         <Link to="/dashboard">
