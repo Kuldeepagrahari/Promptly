@@ -48,6 +48,16 @@
   <li>Gemini API Key</li>
   <li>ImageKit account</li>
 </ul>
+<h2>📸 Screenshots</h2>
+
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/2cc694e7-b536-4a24-bf69-1229e77284a3" alt="Chat2" width="500"/></td>
+    <td><img src="https://github.com/user-attachments/assets/cbca4730-a487-4a38-b6d7-23fba111383c" alt="Chat1" width="800"/><img src="https://github.com/user-attachments/assets/d50b7db4-fd94-4120-921a-aab1fb1af418" alt="Chat3" width="800"/> </td>
+  </tr>
+</table>
+
+<hr>
 
 <h3>🧪 Installation</h3>
 
@@ -125,16 +135,7 @@ npm start</code></pre>
 
 <hr>
 
-<h2>📸 Screenshots</h2>
 
-<table>
-  <tr>
-    <td><img src="https://github.com/user-attachments/assets/2cc694e7-b536-4a24-bf69-1229e77284a3" alt="Chat2" width="500"/></td>
-    <td><img src="https://github.com/user-attachments/assets/cbca4730-a487-4a38-b6d7-23fba111383c" alt="Chat1" width="800"/><img src="https://github.com/user-attachments/assets/d50b7db4-fd94-4120-921a-aab1fb1af418" alt="Chat3" width="800"/> </td>
-  </tr>
-</table>
-
-<hr>
 
 <h2>🌟 Future Enhancements</h2>
 <ul>
