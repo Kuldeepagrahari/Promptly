@@ -1,6 +1,8 @@
 .side{
     padding: 20px;
     display: flex;
+    border-top-left-radius: 50px;
+
     flex-direction: column;
     color:rgb(212, 208, 208);
     /* align-items: center; */

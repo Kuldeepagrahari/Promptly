@@ -11,12 +11,11 @@ const DashBody = () => {
   const navigate = useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log("shjjsdbj")
     const text = e.target.text.value;
  
     if ( !text )return;
 
-    const response = await fetch("https://samai-backend-bvan.onrender.com/api/chats", {
+    const response = await fetch("http://localhost:106/api/chats", {
      method:"POST",
      credentials:'include',
      headers:{
@@ -27,13 +26,12 @@ const DashBody = () => {
    const data = await response.json()
    // console.log(data)
    navigate(`/dashboard/chat/${data}`)
-   
  }
   return (
     <div className='chat'>
       <div className="text">
         <div className="name">
-          <FaInnosoft style={{fontSize:"45px"}} /> <span>SAM AI</span> 
+          <FaInnosoft style={{fontSize:"45px"}} /> <span>Promptly</span> 
         </div>
         <div className="boxes">
           <div className="box">
@@ -53,7 +51,6 @@ const DashBody = () => {
       <div className="search">
       
         <form onSubmit={handleSubmit}>
-        
         
         <input type="text" name = "text" placeholder='Name Your Chat' />
         <button onSubmit={ () => navigate("/dashboard/chat/12")}><MdSend style={{backgroundColor:"rgb(200,200,200)",  padding:"5px", width:"35px", fontSize:"30px", borderRadius:"50%",}}/></button>

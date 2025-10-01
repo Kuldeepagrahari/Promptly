@@ -15,9 +15,10 @@ const imagekit = new ImageKit({
 import { ClerkExpressRequireAuth } from '@clerk/clerk-sdk-node'
   
 import ConnectDB from "./util/db.js"
+
 app.use(express.json())
 app.use(cors({
-    origin:"https://samai-frontend.onrender.com",
+    origin:"http://localhost:5173",
     credentials: true
 }))
 const PORT = process.env.PORT || 106
@@ -34,7 +35,7 @@ app.post("/api/chats", ClerkExpressRequireAuth(), async (req, res) => {
     const { text } = req.body;
     const userId = req.auth.userId
     try {
-        const newChat = await Chat.create({
+            const newChat = await Chat.create({
             userId: userId,
             history:[{role:"user", parts:[{text}]}]
         })
@@ -97,7 +98,7 @@ app.get("/api/chat/:id", ClerkExpressRequireAuth(), async(req, res)=>{
 })
 app.put("/api/chat/:id", ClerkExpressRequireAuth(), async (req, res) => {
     const { id: chatId } = req.params; // Extract chat ID from URL
-    const { prompt, response } = req.body; // User's new message and AI response
+    const { prompt, response, img } = req.body; // Optional image path from ImageKit
     const userId = req.auth.userId;
   
     if (!prompt || !response) {
@@ -114,7 +115,7 @@ app.put("/api/chat/:id", ClerkExpressRequireAuth(), async (req, res) => {
   
       // Append the new user message and AI response to the history
       chat.history.push(
-        { role: "user", parts: [{ text: prompt }] },
+        { role: "user", parts: [{ text: prompt }], ...(img ? { img } : {}) },
         { role: "model", parts: [{ text: response }] }
       );
   

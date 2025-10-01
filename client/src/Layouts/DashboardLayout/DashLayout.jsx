@@ -9,7 +9,11 @@ import { MdAddCircleOutline } from "react-icons/md";
 import { useAuth } from "@clerk/clerk-react";
 import { VscThreeBars } from "react-icons/vsc";
 import { ImCross } from "react-icons/im";
-const DashLayout = () => {
+const DashLayout =  () => {
+  const { getToken } = useAuth();
+// const token = getToken();
+// console.log(token);
+
   // const { userId, isLoaded } = useAuth();
 
   // const navigate = useNavigate();
@@ -20,6 +24,7 @@ const DashLayout = () => {
   //   }
   // }, [isLoaded, userId, navigate]);
   // if (!isLoaded) return "Loading...";
+  
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [userchats, setUserchats] = useState([])
   const toggleSidebar = () => {
@@ -28,9 +33,13 @@ const DashLayout = () => {
 
   const GiveUserChats = async () => {
     try {
-      const response = await fetch("https://samai-backend-bvan.onrender.com/api/userChats",{
-        credentials:"include"
+      const token = await getToken();
+      const response = await fetch("http://localhost:106/api/userChats", {
+        headers: {
+          Authorization: `Bearer ${token}`,   // ✅ attach token
+        },
       });
+  
       if (response.ok) {
         const data = await response.json(); 
         setUserchats(data[0].chats); 
@@ -60,7 +69,7 @@ const DashLayout = () => {
         </Link>
         <Link to="/">
           <RiDashboardHorizontalLine style={{ fontSize: "25px" }} />
-          {!isCollapsed && "Explore Sam AI"}
+          {!isCollapsed && "Explore Promptly"}
         </Link>
         <Link to="/">
           <MdOutlinePermContactCalendar style={{ fontSize: "25px" }} />
@@ -82,7 +91,7 @@ const DashLayout = () => {
           <div className="upgrade">
             <FaInnosoft style={{ fontSize: "50px" }} />
             <div className="texts">
-              <span>Upgrade to Sam AI Pro</span>
+              <span>Upgrade to Promptly Pro</span>
               <span>Get unlimited access to all features</span>
             </div>
           </div>

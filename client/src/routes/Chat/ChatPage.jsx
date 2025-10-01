@@ -6,8 +6,10 @@ import Upload from '../../components/upload/Upload';
 import model from '../../lib/gemini';
 import Markdown from "react-markdown";
 import { useLocation } from 'react-router-dom';
+import { useAuth }  from '@clerk/clerk-react';
 
 const ChatPage = () => {
+  const {getToken} = useAuth()
   const [prompt, setPrompt] = useState("");
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false); // Loading state
@@ -25,8 +27,11 @@ const ChatPage = () => {
   const getChat = async () => {
     setLoading(true); // Start loading
     try {
+      const token = await getToken()
       const data = await fetch(`http://localhost:106/api/chat/${chatId}`, {
-        credentials: "include",
+        headers: {
+          Authorization: `Bearer ${token}`,  // ✅ attach token
+        },
       });
       if (data.ok) {
         const chat = await data.json();
@@ -51,47 +56,97 @@ const ChatPage = () => {
     endref.current.scrollIntoView({ behavior: "smooth" });
   }, [response, chatting, prompt, img.dbData]);
 
-  const chat = model.startChat();
+  // Load chat history when chatId changes or on mount
+  useEffect(() => {
+    if (chatId) {
+      getChat();
+    }
+  }, [chatId]);
+
+  // Keep a stable Gemini chat session across renders
+  const chatRef = useRef(null);
+  useEffect(() => {
+    if (!chatRef.current) {
+      try {
+        chatRef.current = model.startChat();
+      } catch (err) {
+        console.error("Failed to start chat session:", err);
+      }
+    }
+  }, []);
 
   // Add prompt and response
   const add = async () => {
-    setLoading(true); // Start loading
+    setLoading(true);
     try {
       const prompts = prompt;
-      console.log("Sending prompt: ", prompts);
-
-      const result = await chat.sendMessage(prompts);
+      if (!prompts) {
+        setLoading(false);
+        return;
+      }
+      if (!chatRef.current) {
+        chatRef.current = model.startChat();
+      }
+      // If an image was uploaded, attach it as inlineData for multimodal analysis
+      let result;
+      if (img?.dbData?.filePath) {
+        const fullUrl = `https://ik.imagekit.io/wvihthnsz/${img.dbData.filePath}`;
+        const base64Data = await (async () => {
+          const res = await fetch(fullUrl);
+          const blob = await res.blob();
+          const arrayBuffer = await blob.arrayBuffer();
+          const bytes = new Uint8Array(arrayBuffer);
+          let binary = "";
+          for (let i = 0; i < bytes.byteLength; i++) {
+            binary += String.fromCharCode(bytes[i]);
+          }
+          return btoa(binary);
+        })();
+        const mimeType = "image/*";
+        result = await chatRef.current.sendMessage([
+          { text: prompts },
+          { inlineData: { data: base64Data, mimeType } },
+        ]);
+      } else {
+        result = await chatRef.current.sendMessage(prompts);
+      }
+  
       if (result?.response?.text) {
-        setResponse(result.response.text());
-        console.log("Processed response: ", result.response.text());
-
-        // Update the chat in the database
-        await fetch(`https://samai-backend-bvan.onrender.com/api/chat/${chatId}`, {
+        const reply = result.response.text();
+        setResponse(reply);
+  
+        const token = await getToken();  // ✅ get token
+        await fetch(`http://localhost:106/api/chat/${chatId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,  // ✅ include here too
           },
-          credentials: "include",
           body: JSON.stringify({
             prompt,
-            response: result.response.text(),
+            response: reply,
+            img: img?.dbData?.filePath || undefined,
           }),
         });
-
-        // Refresh the chat history
-        getChat();
+  
+        await getChat(); // refresh history
+        // Reset image state so future prompts don't reuse the previous image
+        setImg({ isLoading: false, error: "", dbData: {} });
       } else {
         console.error("Invalid response format: ", result);
       }
     } catch (error) {
       console.error("Error in add function: ", error);
     } finally {
-      setLoading(false); // End loading
+      setLoading(false);
     }
   };
+  
 useEffect(() => {
-  add()
-}, [prompt, chatId])
+  if (prompt) {
+    add()
+  }
+}, [prompt])
   const handleSubmit = async (e) => {
     e.preventDefault();
     const text = e.target.promptInput.value;
@@ -111,6 +166,16 @@ useEffect(() => {
               <div key={chat._id || chatIndex}>
                 {chat.history.map((historyItem, historyIndex) => (
                   <div key={historyIndex}>
+                    {historyItem.role === "user" && historyItem.img && (
+                      <IKImage
+                        urlEndpoint="https://ik.imagekit.io/wvihthnsz"
+                        path={historyItem.img}
+                        transformation={[{ width: 400, height: 300 }]}
+                        loading="lazy"
+                        lqip={{ active: true, quality: 20 }}
+                        style={{ maxWidth: "400px", height: "auto", borderRadius: "8px" }}
+                      />
+                    )}
                     {historyItem.parts.map((part, partIndex) => (
                       <div
                         className={
@@ -126,8 +191,7 @@ useEffect(() => {
               </div>
             ))
           )}
-          {prompt && <div className="message user"><Markdown>{prompt}</Markdown></div>}
-          {response && <div className="message"><Markdown>{response}</Markdown></div>}
+          {/* Remove optimistic local echo to avoid duplicate render; rely on fetched history */}
           {img.isLoading ? (
             <div>Loading...</div>
           ) : (
@@ -135,6 +199,10 @@ useEffect(() => {
               <IKImage
                 urlEndpoint="https://ik.imagekit.io/wvihthnsz"
                 path={img.dbData?.filePath}
+                transformation={[{ width: 400, height: 300 }]}
+                loading="lazy"
+                lqip={{ active: true, quality: 20 }}
+                style={{ maxWidth: "400px", height: "auto", borderRadius: "8px" }}
               />
             )
           )}

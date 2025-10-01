@@ -14,7 +14,7 @@ const HomePage = () => {
       </video>
 
       <div className="left">
-        <h1><span>SAM AI</span></h1>
+        <h1><span>Promptly</span></h1>
         <h4>Supercharge your creativity and productivity</h4>
         <p>just upload a picture or give a prompt, it will provide you the tutorial to learn the topics, debug code, generate code, help for creativity, lengthy manual text works and much more.</p>
         <button>

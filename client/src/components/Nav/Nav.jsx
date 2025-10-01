@@ -9,7 +9,7 @@ const Nav = () => {
   return (
     <div className='nav'>
       <header>
-        <NavLink to="/" className="logo"><FaInnosoft /><span>Sam AI</span></NavLink>
+        <NavLink to="/" className="logo"><FaInnosoft /><span>Promptly</span></NavLink>
         <NavLink><SignedOut>
           <NavLink to="/sign-in">Login</NavLink>
         </SignedOut>

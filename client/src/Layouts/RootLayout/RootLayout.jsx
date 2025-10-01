@@ -2,10 +2,11 @@ import React from 'react'
 import "./rootlayout.css"
 import Nav from '../../components/Nav/Nav'
 import { Outlet } from 'react-router-dom'
-const PUBLISHABLE_KEY = "pk_test_YXB0LWdhcmZpc2gtMC5jbGVyay5hY2NvdW50cy5kZXYk"
 import { ClerkProvider } from '@clerk/clerk-react'
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+
 if (!PUBLISHABLE_KEY) {
-  throw new Error("Missing Publishable Key")
+  throw new Error("Missingnlll Publishable Key, jk")
 }
 const RootLayout = () => {
 
