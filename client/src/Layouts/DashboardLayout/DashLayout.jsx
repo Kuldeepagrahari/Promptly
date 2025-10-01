@@ -34,7 +34,7 @@ const DashLayout =  () => {
   const GiveUserChats = async () => {
     try {
       const token = await getToken();
-      const response = await fetch("http://localhost:106/api/userChats", {
+      const response = await fetch("https://promptly-backend-n0ef.onrender.com/api/userChats", {
         headers: {
           Authorization: `Bearer ${token}`,   // ✅ attach token
         },

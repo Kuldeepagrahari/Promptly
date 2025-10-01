@@ -28,7 +28,7 @@ const ChatPage = () => {
     setLoading(true); // Start loading
     try {
       const token = await getToken()
-      const data = await fetch(`http://localhost:106/api/chat/${chatId}`, {
+      const data = await fetch(`https://promptly-backend-n0ef.onrender.com/api/chat/${chatId}`, {
         headers: {
           Authorization: `Bearer ${token}`,  // ✅ attach token
         },
@@ -116,7 +116,7 @@ const ChatPage = () => {
         setResponse(reply);
   
         const token = await getToken();  // ✅ get token
-        await fetch(`http://localhost:106/api/chat/${chatId}`, {
+        await fetch(`https://promptly-backend-n0ef.onrender.com/api/chat/${chatId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
