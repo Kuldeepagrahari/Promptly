@@ -18,7 +18,7 @@ import ConnectDB from "./util/db.js"
 
 app.use(express.json())
 app.use(cors({
-    origin:"http://localhost:5173",
+    origin:"https://promptly-pk2h.onrender.com/",
     credentials: true
 }))
 const PORT = process.env.PORT || 106
