@@ -7,19 +7,23 @@ import { MdSend } from "react-icons/md";
 import { RiAttachmentLine } from "react-icons/ri";
 import Upload from '../upload/Upload.jsx';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@clerk/clerk-react';
 const DashBody = () => {
   const navigate = useNavigate()
+  const {getToken} = useAuth()
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     const text = e.target.text.value;
  
     if ( !text )return;
 
+    const token = await getToken()
     const response = await fetch("https://promptly-backend-n0ef.onrender.com/api/chats", {
      method:"POST",
-     credentials:'include',
      headers:{
-       "Content-Type":"application/json"
+       "Content-Type":"application/json",
+       Authorization: `Bearer ${token}`
     },
     body:JSON.stringify({text})
    })
